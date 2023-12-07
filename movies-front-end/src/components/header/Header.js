@@ -1,11 +1,11 @@
 // Importing necessary dependencies and components
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faVideoSlash } from '@fortawesome/free-solid-svg-icons';
+
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -25,10 +25,12 @@ const Header = () => {
               Home
             </NavLink>
           </Nav>
-          <Button variant="outline-info" className="me-2">
+          <Link to="/login" className="btn btn-outline-info me-2">
             Login
-          </Button>
-          <Button variant="outline-info">Register</Button>
+          </Link>
+          <Link to="/register" className="btn btn-outline-info">
+            Register
+          </Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -8,6 +8,8 @@ import Home from './components/home/Home';
 import Header from './components/header/Header';
 import Trailer from './components/trailer/Trailer';
 import Reviews from './components/reviews/Reviews';
+import Login from './components/user/Login';
+import Register from './components/user/Register';
 
 function App() {
   // State for managing movies, single movie, and reviews
@@ -66,6 +68,8 @@ function App() {
               />
             }
           ></Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Route>
       </Routes>
     </div>
