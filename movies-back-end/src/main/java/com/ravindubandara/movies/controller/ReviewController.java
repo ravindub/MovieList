@@ -22,4 +22,17 @@ public class ReviewController {
         // Handles POST requests to create a new review
         return new ResponseEntity<Review>(reviewService.createReview(payload.get("reviewBody"), payload.get("imdbId")), HttpStatus.CREATED);
     }
+
+    // Update an existing review
+    @PutMapping("/{id}")
+    public ResponseEntity<Review> updateReview(@PathVariable String id, @RequestBody Map<String, String> payload) {
+        return ResponseEntity.ok(reviewService.updateReview(id, payload.get("reviewBody")));
+    }
+
+    // Delete an existing review
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteReview(@PathVariable String id) {
+        reviewService.deleteReview(id);
+        return ResponseEntity.noContent().build();
+    }
 }

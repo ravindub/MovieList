@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.Map;
 import java.util.Optional;
 
@@ -31,8 +32,12 @@ public class UserController {
         String password = credentials.get("password");
 
         // Perform login and return information
-        Optional<User> user = userService.loginUser(username, password);
-        return user.map(u -> new ResponseEntity<>("Login successful", HttpStatus.OK))
+       Optional<User> user = userService.loginUser(username, password);
+       return user.map(u -> new ResponseEntity<>("Login successful", HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED));
+
     }
+
+
+
 }

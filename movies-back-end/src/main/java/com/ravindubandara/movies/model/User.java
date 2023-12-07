@@ -18,6 +18,15 @@ public class User {
     private String username;
     private String password;
 
+    // Constructor for creating a user with a hashed password
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     public String getPassword() {
         return this.password;
     }
