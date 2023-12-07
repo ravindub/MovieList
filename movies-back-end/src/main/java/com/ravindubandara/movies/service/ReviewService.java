@@ -1,5 +1,8 @@
-package com.ravindubandara.movies;
+package com.ravindubandara.movies.service;
 
+import com.ravindubandara.movies.model.Movie;
+import com.ravindubandara.movies.model.Review;
+import com.ravindubandara.movies.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

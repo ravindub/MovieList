@@ -1,4 +1,4 @@
-package com.ravindubandara.movies;
+package com.ravindubandara.movies.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

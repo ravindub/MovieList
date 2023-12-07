@@ -45,6 +45,7 @@
   color: white;
   display: flex;
   align-items: center;
+  margin: 10px;
 }
 
 .movie-buttons-container {
