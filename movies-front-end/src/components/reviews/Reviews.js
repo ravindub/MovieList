@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import api from '../../api/axiosConfig';
 import { useParams } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 import ReviewForm from '../reviewForm/ReviewForm';
 
 import React from 'react';
@@ -31,10 +31,29 @@ const Reviews = ({ getMovieData, movie, reviews, setReviews }) => {
         imdbId: movieId
       });
 
+      console.log('API Response:', response.data);
       // Updating the reviews state with the new review
       const updatedReviews = [...reviews, { body: rev.value }];
 
       rev.value = '';
+
+      //setReviews(updatedReviews);
+      getMovieData(movieId);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Function to delete a review
+  const deleteReview = async (reviewId) => {
+    try {
+      //const reviewIdString = JSON.stringify(reviewId);
+
+      // Making a DELETE request to delete a review
+      await api.delete(`/api/v1/reviews/${reviewId}`);
+
+      // Updating the reviews state after deletion
+      const updatedReviews = reviews.filter((r) => r.id !== reviewId);
 
       setReviews(updatedReviews);
     } catch (error) {
@@ -80,13 +99,28 @@ const Reviews = ({ getMovieData, movie, reviews, setReviews }) => {
             return (
               <div key={reviews.indexOf(r)}>
                 <Row>
-                  <Col>{r.body}</Col>
-                </Row>
-                <Row>
+                  {/* {console.log(r)} */}
+                  <Col className="m-1">{r.body}</Col>
                   <Col>
-                    <hr />
+                    {/* Buttons for update and delete */}
+                    <Button
+                      className="m-1"
+                      variant="warning"
+                      onClick={() => {
+                        // Handle update action (you can implement your update logic here)
+                        console.log(`Update review with ID: ${r.id}`);
+                      }}
+                    >
+                      Update
+                    </Button>
+                    <Button variant="danger" onClick={() => deleteReview(r.id)}>
+                      Delete
+                    </Button>
                   </Col>
                 </Row>
+                <Col>
+                  <hr />
+                </Col>
               </div>
             );
           })}

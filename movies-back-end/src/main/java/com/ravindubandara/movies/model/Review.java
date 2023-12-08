@@ -14,7 +14,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Review {
 
     @Id
-    private ObjectId id; // Primary identifier for the document
+    private String id;// Primary identifier for the document
+    //private ObjectId id;
     private String body; // Content of the review
 
     // Additional constructor that allows creating instances with just the review body.
