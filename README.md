@@ -52,11 +52,19 @@ The application is built with a React frontend and a Spring Boot backend, utiliz
    ```bash
    npm start
 
-5. **Run the Backend:**
-- Open the project in IntelliJ IDEA and run the application.
+5. **Configure MongoDB:**
+   - Configure MongoDB locally or use MongoDB Atlas.
+   - Create a `.env` file in the `src/main/resources` folder.
+   - Add the connection string to the `.env` file (refer to the structure in `.env.example`).
 
-6. **Access the Application:**
-- Open your web browser and go to http://localhost:3000 to start exploring the Movie List Application.
+6. **Import JSON Data:**
+   - Import JSON data from the `data/movies.json` file.
+
+8. **Run the Backend:**
+   - Open the project in IntelliJ IDEA and run the application.
+
+8. **Access the Application:**
+   - Open your web browser and go to http://localhost:3000 to start exploring the Movie List Application.
 
 ## API Endpoints
 - GET /api/v1/movies: Retrieve the list of movies.
