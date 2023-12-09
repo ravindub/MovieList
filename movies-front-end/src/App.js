@@ -16,6 +16,12 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [movie, setMovie] = useState();
   const [reviews, setReviews] = useState([]);
+  const [username, setUsername] = useState('');
+
+  // Function to update username in App state
+  const updateUsername = (newUsername) => {
+    setUsername(newUsername);
+  };
 
   // Function to fetch movies from the API
   const getMovies = async () => {
@@ -52,7 +58,7 @@ function App() {
   // Rendering the main structure of the app
   return (
     <div className="App">
-      <Header />
+      <Header username={username} updateUsername={updateUsername} />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home movies={movies} />}></Route>
@@ -68,7 +74,10 @@ function App() {
               />
             }
           ></Route>
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={<Login updateUsername={updateUsername} />}
+          />
           <Route path="/register" element={<Register />} />
         </Route>
       </Routes>

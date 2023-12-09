@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 import api from '../../api/axiosConfig';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ updateUsername }) => {
   const navigate = useNavigate();
   // State to store input values
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    const storedUsername = sessionStorage.getItem('username');
+    if (storedUsername) {
+      // If username is already set in sessionStorage, navigate to the root
+      navigate('/');
+    }
+  }, [navigate]);
 
   // Function to handle login button click
   const handleLogin = async (e) => {
@@ -20,13 +28,21 @@ const Login = () => {
         password
       });
 
-      // Handle the response
-      console.log('Login successful:');
+      if (response.status === 200) {
+        // Store the username in sessionStorage
+        sessionStorage.setItem('username', username);
 
-      // Navigate to the home page after successful login
-      navigate('/');
+        // Update the username in the App state
+        updateUsername(username);
+
+        // Navigate to the home page after successful login
+        navigate('/');
+      } else {
+        console.error('Login failed:', response.statusText);
+      }
     } catch (error) {
       // Handle login failure
+      alert(`Login failed: Invalid credentials`);
       console.error('Login failed:', error.response.data);
     }
   };

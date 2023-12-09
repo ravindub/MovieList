@@ -7,13 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.Map;
 import java.util.Optional;
 
 // UserController Class handling user-related HTTP requests
 @RestController //create controllers for REST APIs
-@CrossOrigin(origins = "*")// Allows cross-origin requests
+@CrossOrigin(origins = "http://localhost:3000")// Allows cross-origin requests
 @RequestMapping("/api/v1/users")// Base URI for user-related endpoints
 public class UserController {
     @Autowired // Injects UserService for business logic
